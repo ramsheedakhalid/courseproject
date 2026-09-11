@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .home-section {
+        min-height: calc(100vh - 70px);
+        background: #eaf7ff;
+        padding: 60px 8%;
+    }
+
+    .home-container {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+    }
+
+    /* Left content */
+
+    .home-content {
+        width: 50%;
+    }
+
+    .home-content h1 {
+        font-size: 52px;
+        color: #17243b;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+
+    .home-content h1 span {
+        color: #168acb;
+    }
+
+    .home-content p {
+        font-size: 19px;
+        color: #536579;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+
+    /* Buttons */
+
+    .home-btn {
+        display: inline-block;
+        text-decoration: none;
+        padding: 13px 25px;
+        border-radius: 6px;
+        margin-right: 10px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .btn-student {
+        background: #168acb;
+        color: white;
+    }
+
+    .btn-student:hover {
+        background: #106f9f;
+        color: white;
+    }
+
+    .btn-course {
+        border: 2px solid #168acb;
+        color: #168acb;
+        background: white;
+    }
+
+    .btn-course:hover {
+        background: #168acb;
+        color: white;
+    }
+
+    /* Right image */
+
+    .home-image {
+        width: 50%;
+        text-align: center;
+    }
+
+    .home-image img {
+        width: 100%;
+        max-width: 550px;
+        height: auto;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 768px) {
+
+        .home-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .home-content,
+        .home-image {
+            width: 100%;
+        }
+
+        .home-content h1 {
+            font-size: 38px;
+        }
+
+        .home-content p {
+            font-size: 17px;
+        }
+
+        .home-image img {
+            margin-top: 30px;
+        }
+    }
+</style>
+
+
+<section class="home-section">
+
+    <div class="home-container">
+
+        <!-- Left side -->
+
+        <div class="home-content">
+
+            <h1>
+                Welcome to
+                <span>Student Management</span>
+            </h1>
+
+            <p>
+                Manage students, courses and academic details
+                easily in one place.
+            </p>
+
+            <a href="{% url 'add_student' %}"
+               class="home-btn btn-student">
+                Add Student
+            </a>
+
+            <a href="{% url 'add_course' %}"
+               class="home-btn btn-course">
+                Add Course
+            </a>
+
+        </div>
+
+
+        <!-- Right side -->
+
+        <div class="home-image">
+
+            <img src="{% static 'images/imagee.jpg' %}"
+                 alt="Student Management">
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

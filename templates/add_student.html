@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="vh-100" style="background-color: #508fcf;">
+
+    <div class="container py-5 h-100">
+
+        <div class="row d-flex justify-content-center align-items-center h-100">
+
+            <div class="col-md-6">
+
+                <div class="card p-5">
+
+                    <h1 class="text-center mb-4">Add Student</h1>
+
+                    <form method="POST" action="{% url 'add_studentdb' %}">
+
+                        {% csrf_token %}
+
+                        <div class="form-outline mb-4">
+                            <input type="text" placeholder="Enter Name" name="name" class="form-control">
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" placeholder="Address" name="address" class="form-control">
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" placeholder="Enter Age" name="age" class="form-control">
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="date" name="jdate" class="form-control">
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <select class="form-select" name="sel">
+
+                                {% for c in course %}
+                                    <option value="{{ c.id }}">{{ c.course_name }}</option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+
+                        <input type="submit" value="Submit">
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

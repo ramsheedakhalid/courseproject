@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row d-flex justify-content-center align-items-center">
+    <div class="col-md-6">
+
+        <div class="card p-5">
+
+            <form method="POST" action="{% url 'editd' stud.id %}">
+                {% csrf_token %}
+
+                <div class="form-outline mb-4">
+                    <input type="text" placeholder="Enter Name" name="name" class="form-control" value="{{ stud.student_name }}">
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" placeholder="Address" name="address" class="form-control" value="{{ stud.student_address }}">
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" placeholder="Enter Age" name="age" class="form-control" value="{{ stud.student_age }}">
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="date" name="jdate" class="form-control" value="{{ stud.joining_date|date:'Y-m-d' }}">
+                </div>
+
+                <div class="form-outline mb-4">
+                    <select class="form-select" name="sel">
+
+    {% for c in course %}
+
+        {% if c.id == stud.course.id %}
+            <option value="{{ c.id }}" selected>
+                {{ c.course_name }}
+            </option>
+        {% else %}
+            <option value="{{ c.id }}">
+                {{ c.course_name }}
+            </option>
+        {% endif %}
+
+    {% endfor %}
+
+</select>
+                </div>
+
+                <input type="submit" value="Update" class="btn btn-primary">
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

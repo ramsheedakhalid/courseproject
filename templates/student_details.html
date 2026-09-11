@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Details{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h1 class="text-center mb-4">Student Details</h1>
+
+    <table class="table table-bordered w-auto mx-auto">
+        <thead>
+            <tr>
+                <th>STUDENT ID</th>
+                <th>STUDENT NAME</th>
+                <th>ADDRESS</th>
+                <th>AGE</th>
+                <th>JOINING DATE</th>
+                <th>COURSE</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for s in students %}
+            <tr>
+                <td>{{ s.id }}</td>
+                <td>{{ s.student_name }}</td>
+                <td>{{ s.student_address }}</td>
+                <td>{{ s.student_age }}</td>
+                <td>{{ s.joining_date }}</td>
+                <td>{{ s.course.course_name }}</td>
+                <td>
+                    <a href="{% url 'edit' s.id %}" class="btn btn-primary btn-sm">
+                        Edit
+                    </a>
+                    <a href="{% url 'delete' s.id %}" class="btn btn-primary btn-sm">delete</a></td>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
